@@ -2,7 +2,7 @@ package _3_classComponents.NestedClasses;
 
 public class Demo5 {
     class Inner {
-       // A non-static inner class can have only instance members;
+       // A non-static inner class can have only instance members.
        // static members are not allowed except static final constants.
 
         /*
