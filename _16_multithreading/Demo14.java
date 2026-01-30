@@ -1,5 +1,4 @@
 package _16_multithreading;
-he as
 public class Demo14 {
 
     public static void main(String[] args) {
