@@ -56,7 +56,7 @@ Since Stack extends Vector, it also has:
     capacity()
     iterator()
 
-⚠ Bad practice to use these on Stack
+⚠ Bad Interview_Programs.practice to use these on Stack
  */
 
 
