@@ -8,11 +8,11 @@ public class Find_Duplicate {
     public static void main(String[] args) {
         int[] arr = {2, 3, 3, 4, 5, 7, 7, 8};
 
-        Set<Integer> set = new HashSet<>();
-        Set<Integer> duplicates  = new HashSet<>();
+        HashSet<Integer> set = new HashSet<>();
+        HashSet<Integer> duplicates = new HashSet<>();
 
-        for (int num : arr) {
-            if (!set.add(num)) {
+        for(int num : arr){
+            if(!set.add(num)){
                 duplicates.add(num);
             }
         }

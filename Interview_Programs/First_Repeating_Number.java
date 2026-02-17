@@ -2,7 +2,7 @@ package Interview_Programs;
 
 import java.util.HashSet;
 
-public class First_Repeating_Character {
+public class First_Repeating_Number {
     public static void main(String[] args) {
         int[] arr = {1, 2, 3, 3, 1, 4, 5, 6, 7, 2};
 
