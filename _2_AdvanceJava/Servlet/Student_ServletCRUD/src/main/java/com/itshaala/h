@@ -1,0 +1,8 @@
+servlet-crud
+ ├─ src/main/java
+ │   └─ com/itshaala/
+ │       ├─ controller   → Servlets (TestServlet, AddStudentServlet, etc.)
+ │       ├─ dao          → JDBC / DB logic (StudentDAO, DBUtil)
+ │       └─ model        → POJO classes (Student)
+ └─ src/main/webapp
+     └─ WEB-INF/web.xml
