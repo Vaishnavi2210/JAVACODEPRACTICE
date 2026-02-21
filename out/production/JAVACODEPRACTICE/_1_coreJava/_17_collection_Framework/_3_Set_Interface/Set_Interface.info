@@ -1,0 +1,158 @@
+/*
+Q)  What is Set Interface?
+
+  Part of java.util
+  Extends Collection
+  Does NOT allow duplicates
+  Order depends on implementation
+  Uses equals() + hashCode()
+
+✔ Set doesn’t allow duplicates
+✔ Uses equals() & hashCode()
+✔ HashSet → fastest
+✔ TreeSet → sorted
+✔ LinkedHashSet → order preserved
+
+  public interface Set<E> extends Collection<E>
+
+*/
+
+    Set<Integer> set = new Set<>();
+
+1️⃣ INSERTION IN SET
+   // add(E e) - hashCode() is calculated
+                 Bucket index is found
+                 equals() is checked
+                 If unique → inserted
+                 If duplicate → ignored
+         Return Value :
+                 true → inserted
+                 false → duplicate
+
+     set.add(10);
+
+
+// addAll(Collection c)
+   set.addAll(list);
+
+   Working:
+      Adds only unique elements
+      Duplicates automatically skipped
+
+ 2️⃣ DELETION IN SET
+
+ // remove(Object o)
+    set.remove(10);
+
+    Step-by-step:
+       Finds bucket using hashCode
+       Compares using equals()
+       Removes element if found
+
+ // removeAll(Collection c)
+    set.removeAll(otherSet);
+
+    Removes all matching elements
+
+ // retainAll(Collection c)
+    set.retainAll(otherSet);
+
+    Keeps common elements
+    Deletes remaining
+
+ // Method: clear()
+ set.clear();
+
+ Removes all elements
+ Set becomes empty
+
+3️⃣ TRAVERSAL IN SET
+🔸 Using Iterator (MOST COMMON)
+Iterator<Integer> it = set.iterator();
+while(it.hasNext()){
+    System.out.println(it.next());
+}
+
+✔ Safe
+✔ Fail-fast
+
+🔸 Using Enhanced for-loop
+for(Integer i : set){
+    System.out.println(i);
+}
+
+✔ Simple
+❌ No removal allowed
+
+🔸 Using forEach (Java 8)
+set.forEach(e -> System.out.println(e));
+
+4️⃣ SEARCH / CHECK OPERATIONS
+🔸 Method: contains(Object o)
+set.contains(20);
+✔ Returns true / false
+
+🔸 Method: containsAll(Collection c)
+set.containsAll(list);
+
+5️⃣ SIZE & STATUS METHODS
+🔸 size()
+set.size();
+Number of elements
+
+🔸 isEmpty()
+set.isEmpty();
+
+6️⃣ CONVERSION METHODS
+🔸 toArray()
+Object[] arr = set.toArray();
+
+🔸 toArray(T[] a)
+Integer[] arr = set.toArray(new Integer[0]);
+
+7️⃣ SET IMPLEMENTATION–WISE BEHAVIOR
+🔹 HashSet
+Set<Integer> set = new HashSet<>();
+
+No order
+One null allowed
+Fastest
+
+🔹 LinkedHashSet
+Set<Integer> set = new LinkedHashSet<>();
+
+Maintains insertion order
+One null allowed
+
+🔹 TreeSet
+Set<Integer> set = new TreeSet<>();
+
+Sorted order
+No null allowed
+Uses Red-Black Tree
+
+8️⃣ COMPLETE EXAMPLE (Insertion, Deletion, Traversal)
+Set<Integer> set = new HashSet<>();
+
+// insertion
+set.add(10);
+set.add(20);
+set.add(30);
+set.add(20); // ignored
+
+// deletion
+set.remove(10);
+
+// traversal
+for(Integer i : set){
+    System.out.println(i);
+}
+
+// size
+System.out.println("Size: " + set.size());
+
+✔ Set doesn’t allow duplicates
+✔ Uses equals() & hashCode()
+✔ HashSet → fastest
+✔ TreeSet → sorted
+✔ LinkedHashSet → order preserved

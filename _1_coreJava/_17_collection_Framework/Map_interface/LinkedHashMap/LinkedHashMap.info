@@ -1,0 +1,90 @@
+1️⃣ What is LinkedHashMap?
+
+LinkedHashMap is a Map implementation in Java.
+It stores key-value pairs like HashMap.
+Preserves insertion order (or access order if specified).
+Allows 1 null key and multiple null values.
+Faster than TreeMap (O(1) average operations).
+Key idea: Internally it’s a Hash table + doubly linked list → Hash for fast lookup, Linked list for maintaining order.
+
+2️⃣ Declaration & Basic Usage
+import java.util.*;
+
+public class LinkedHashMapExample {
+    public static void main(String[] args) {
+
+        Map<Integer, String> map = new LinkedHashMap<>();
+
+        // Adding elements
+        map.put(3, "Jay");
+        map.put(1, "Vaishnavi");
+        map.put(2, "Gayatri");
+        map.put(4, "Anushka");
+
+        System.out.println("LinkedHashMap: " + map);
+
+        // Get value
+        System.out.println("Value for key 2: " + map.get(2));
+
+        // Remove key
+        map.remove(3);
+        System.out.println("After removing key 3: " + map);
+
+        // Iterating entries
+        System.out.println("Iterating over entries:");
+        for (Map.Entry<Integer, String> entry : map.entrySet()) {
+            System.out.println(entry.getKey() + " -> " + entry.getValue());
+        }
+    }
+}
+
+Output:
+
+LinkedHashMap: {3=Jay, 1=Vaishnavi, 2=Gayatri, 4=Anushka}
+Value for key 2: Gayatri
+After removing key 3: {1=Vaishnavi, 2=Gayatri, 4=Anushka}
+Iterating over entries:
+1 -> Vaishnavi
+2 -> Gayatri
+4 -> Anushka
+
+
+✅ Notice: The insertion order is preserved, unlike HashMap.
+
+3️⃣ LinkedHashMap Features
+Feature	LinkedHashMap
+Maintains order	✅ insertion / access order
+Allows null key	✅ 1 null key
+Allows null values	✅ multiple
+Performance	O(1) average
+Use-case	Maintain order of entries
+Internal Structure	Hash table + doubly linked list
+4️⃣ Access Order (optional)
+
+LinkedHashMap can maintain access order (not insertion order):
+
+Map<Integer, String> accessMap = new LinkedHashMap<>(16, 0.75f, true);
+
+accessMap.put(1, "A");
+accessMap.put(2, "B");
+accessMap.put(3, "C");
+
+// Access some entries
+accessMap.get(1);
+accessMap.get(3);
+
+System.out.println(accessMap);
+
+
+Now the most recently accessed elements move to the end.
+
+Useful for LRU Cache implementation.
+
+5️⃣ LinkedHashMap vs HashMap vs TreeMap
+Feature	         HashMap	  LinkedHashMap  	TreeMap
+Order               No	          Yes	       Sorted (keys)
+Null Key	       Yes	          Yes	           No
+Null Value	       Yes	          Yes          	  Yes
+Performance	       Fast           Fast	       Slower (log n)
+Use-case	     General	Maintain order	    Sorted map
+

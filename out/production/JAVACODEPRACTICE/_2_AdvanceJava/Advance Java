@@ -1,0 +1,41 @@
+1️⃣ What is Multithreading?
+Multithreading allows multiple tasks to run concurrently in a Java application,
+ which improves performance and responsiveness, especially in server-side applications built with Java.
+
+2️⃣ What is a Daemon Thread?
+A daemon thread is a background thread that provides supporting services like logging or cleanup.
+It automatically stops when all user threads finish execution.
+
+3️⃣ What is Java Stream API?
+The Stream API is used to process collections in a functional and declarative way, such as filtering, mapping, and aggregating data, which makes code more readable and concise.
+
+4️⃣ What is JDBC?
+JDBC is a Java API used to connect and interact with relational databases.
+It allows us to perform CRUD operations like insert, update, delete, and fetch data from the database.
+
+5️⃣ What is ORM and Hibernate?
+ORM maps Java objects to database tables, reducing manual SQL work.
+Hibernate is an ORM framework that simplifies database operations in Java applications.
+
+6️⃣ What is Spring / Spring Boot?
+Spring Framework provides infrastructure for building enterprise Java applications using dependency injection.
+Spring Boot simplifies Spring configuration and helps build production-ready REST APIs quickly.
+
+7️⃣ What is REST API?
+A REST API is a way for clients to communicate with a server using HTTP methods
+like GET, POST, PUT, and DELETE to perform operations on resources.
+
+8️⃣ What is Maven?
+Maven is a build and dependency management tool that manages project libraries,
+builds, and project structure automatically.
+
+9️⃣ What is Exception Handling?
+Exception handling is used to handle runtime errors gracefully using try-catch blocks,
+so the application does not crash and proper error messages can be returned.
+
+🔟 What is Thread Safety?
+Thread safety ensures that shared resources are accessed safely by multiple threads
+without causing data inconsistency, usually by using synchronization or locks.
+
+🔥 One smart closing line (use in interview)
+I am comfortable with core Java concepts and I am building backend applications using Spring Boot, JDBC/Hibernate, and REST APIs.

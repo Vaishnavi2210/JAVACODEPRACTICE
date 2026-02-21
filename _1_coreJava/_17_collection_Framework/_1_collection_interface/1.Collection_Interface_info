@@ -1,0 +1,21 @@
+
+
+What is Collection ?
+--> Collection is the root interface of the Java Collection Framework
+     used to store, manipulate, and retrieve a group of objects as a single unit.
+     It extends Iterable interface
+📦 Package: java.util
+
+From Collection:
+add
+addAll
+remove
+removeAll
+retainAll
+clear
+contains
+containsAll
+size
+isEmpty
+iterator
+toArray

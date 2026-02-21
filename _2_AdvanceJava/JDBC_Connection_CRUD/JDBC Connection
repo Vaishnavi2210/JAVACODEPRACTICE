@@ -1,0 +1,49 @@
+Steps to Connect Java Application with JDBC
+1️⃣ Add JDBC Driver
+Pehle database ka driver add karte hain.
+Example: MySQL ke liye driver dependency add karo (usually via Maven).
+Interview line:
+First, we add the JDBC driver dependency for the database we are using.
+
+2️⃣ Load Driver Class
+JDBC driver ko load karte hain:
+Class.forName("com.mysql.cj.jdbc.Driver");
+Interview line:
+Then, we load the JDBC driver class to register it with DriverManager.
+(Note: Newer Java versions me ye step auto ho jata hai, par interview me bolna safe hota hai.)
+
+3️⃣ Create Connection
+Database se connection banao:
+String url = "jdbc:mysql://localhost:3306/mydb";
+String user = "root";
+String pass = "password";
+
+Connection con = DriverManager.getConnection(url, user, pass);
+Interview line:
+After that, we create a connection using DriverManager with database URL, username, and password.
+
+4️⃣ Create Statement / PreparedStatement
+Query chalane ke liye:
+
+PreparedStatement ps =
+    con.prepareStatement("SELECT * FROM users");
+Interview line:
+We create a Statement or PreparedStatement to execute SQL queries.
+
+5️⃣ Execute Query
+Data fetch ya update karo:
+ResultSet rs = ps.executeQuery();
+while (rs.next()) {
+    System.out.println(rs.getString("name"));
+}
+Interview line:
+Then, we execute the query and process the ResultSet to read data.
+
+6️⃣ Close Resources
+Finally sab close karo:
+rs.close();
+ps.close();
+con.close();
+
+Interview line:
+Finally, we close ResultSet, Statement, and Connection to avoid memory leaks.

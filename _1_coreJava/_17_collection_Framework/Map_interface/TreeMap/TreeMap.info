@@ -1,0 +1,90 @@
+1️⃣ What is TreeMap?
+
+TreeMap is a Map implementation in Java.
+It stores key-value pairs.
+Automatically sorts keys in natural order (or using a Comparator).
+Does NOT allow null keys, but allows multiple null values.
+
+Internally, it is implemented as a Red-Black Tree → a self-balancing binary search tree.
+
+✅ Key idea: Keys are always sorted.
+
+2️⃣ Declaration & Basic Usage
+import java.util.*;
+
+public class TreeMapExample {
+    public static void main(String[] args) {
+
+        // TreeMap with Integer keys and String values
+        Map<Integer, String> map = new TreeMap<>();
+
+        map.put(3, "Jay");
+        map.put(1, "Vaishnavi");
+        map.put(2, "Gayatri");
+        map.put(4, "Anushka");
+
+        System.out.println("TreeMap: " + map);
+
+        // Get value
+        System.out.println("Value for key 2: " + map.get(2));
+
+        // Remove key
+        map.remove(3);
+        System.out.println("After removing key 3: " + map);
+
+        // Iterating over entries
+        System.out.println("Iterating entries:");
+        for (Map.Entry<Integer, String> entry : map.entrySet()) {
+            System.out.println(entry.getKey() + " -> " + entry.getValue());
+        }
+    }
+}
+
+
+Output:
+
+TreeMap: {1=Vaishnavi, 2=Gayatri, 3=Jay, 4=Anushka}
+Value for key 2: Gayatri
+After removing key 3: {1=Vaishnavi, 2=Gayatri, 4=Anushka}
+Iterating entries:
+1 -> Vaishnavi
+2 -> Gayatri
+4 -> Anushka
+
+
+✅ Notice how the keys are automatically sorted in ascending order.
+
+3️⃣ TreeMap Features
+Feature	TreeMap
+Maintains order	✅ Sorted keys (natural/comparator)
+Allows null key	❌ No null key
+Allows null values	✅ Multiple
+Performance	O(log n) for add/get/remove
+Internal Structure	Red-Black Tree (self-balancing BST)
+Use-case	Sorted map, range queries
+
+4️⃣ Custom Sorting with Comparator
+Map<Integer, String> map = new TreeMap<>(Comparator.reverseOrder());
+
+map.put(3, "Jay");
+map.put(1, "Vaishnavi");
+map.put(2, "Gayatri");
+
+System.out.println(map);
+
+
+Output:
+
+{3=Jay, 2=Gayatri, 1=Vaishnavi}
+
+
+✅ Now keys are sorted descending using Comparator.
+
+5️⃣ Differences: TreeMap vs HashMap vs LinkedHashMap
+
+Feature	       HashMap	    LinkedHashMap	  TreeMap
+Key Order	      No	     Insertion	       Sorted (natural/comparator)
+Null Key	      Yes	     Yes	           No
+Null Values	      Yes	     Yes	           Yes
+Performance	 O(1) average	O(1) average	  O(log n)
+Use-case	    General	   Maintain order	  Sorted map

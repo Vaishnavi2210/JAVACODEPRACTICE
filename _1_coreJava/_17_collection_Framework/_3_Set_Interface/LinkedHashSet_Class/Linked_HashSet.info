@@ -1,0 +1,46 @@
+1️⃣ What is LinkedHashSet?
+
+--> LinkedHashSet is a special type of Set in Java.
+    Unique elements only: like HashSet, it does not allow duplicates.
+    Maintains insertion order: unlike HashSet, which is unordered.
+    Implementation: uses a Hash table + linked list internally.
+    Performance: O(1) for add, remove, contains (slightly slower than HashSet due to linked list).
+
+2️⃣ Key Points
+   Feature	             HashSet       	LinkedHashSet
+Stores only unique	       ✅	             ✅
+Maintains order	           ❌	             ✅
+Iteration order          Random	        Insertion order
+Allows null	               ✅	             ✅
+
+
+3️⃣ Example of LinkedHashSet
+import java.util.LinkedHashSet;
+import java.util.Set;
+
+public class LinkedHashSetExample {
+    public static void main(String[] args) {
+        Set<String> set = new LinkedHashSet<>();
+        set.add("Apple");
+        set.add("Banana");
+        set.add("Orange");
+        set.add("Banana"); // Duplicate ignored
+
+        System.out.println("LinkedHashSet elements:");
+        for (String s : set) {
+            System.out.println(s);
+        }
+    }
+}
+
+Output:
+Apple
+Banana
+Orange
+✅ Order preserved, duplicates ignored
+
+5️⃣ Why LinkedHashSet is better than HashSet for these problems
+
+If we want first repeating character, insertion order matters
+HashSet is unordered → can’t guarantee first repeated
+LinkedHashSet → always preserves the order of duplicates

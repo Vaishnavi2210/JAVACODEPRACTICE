@@ -1,0 +1,174 @@
+🔹 🔰 Basic Level Questions
+1️⃣ What is File Handling?
+
+👉 File handling is the process of reading and writing data to files stored on disk.
+
+2️⃣ What is the difference between File and FileInputStream?
+File	FileInputStream
+Used to create/delete/check file	Used to read file data
+Does not read/write data	Reads bytes from file
+
+3️⃣ What is the difference between Byte Stream and Character Stream?
+Byte Stream	Character Stream
+8-bit data	16-bit Unicode
+Used for binary files	Used for text files
+FileInputStream	FileReader
+
+4️⃣ What is BufferedReader?
+
+👉 A class used to read text efficiently using buffering.
+
+5️⃣ Why do we use buffering?
+
+👉 To improve performance by reducing disk access.
+
+🔹 🔥 Medium Level Questions
+6️⃣ Difference between FileReader and BufferedReader?
+
+FileReader → reads one character at a time (slow)
+BufferedReader → reads chunk of characters (fast)
+
+7️⃣ What is Serialization?
+👉 Converting object into byte stream so it can be stored in file or transferred.
+
+8️⃣ What is transient keyword?
+👉 It prevents a variable from being serialized.
+
+9️⃣ What happens if you don’t close a stream?
+👉 Resource leak may occur and file may remain locked.
+
+🔟 What is try-with-resources?
+👉 Automatically closes resources after use.
+
+Example:
+try(FileReader fr = new FileReader("data.txt")) {
+}
+
+🔹 🚀 Advanced Level Questions
+1️⃣ Difference between IO and NIO?
+IO	                  NIO
+Stream-based	     Buffer-based
+Blocking	         Non-blocking
+Slower	             Faster
+
+2️⃣ What is serialVersionUID?
+👉 Unique ID used during deserialization to verify compatibility.
+
+3️⃣ What is the difference between write() and append()?
+write() → overwrites file
+append() → adds data at end
+
+4️⃣ How to read file line by line?
+Using:
+BufferedReader.readLine()
+
+5️⃣ How to copy a file in Java?
+Using:
+Files.copy(source, destination);
+
+🔥 Very Common Tricky Questions
+✔ Can File class read file content?
+❌ No
+
+✔ Which is faster — FileReader or BufferedReader?
+✔ BufferedReader
+
+✔ Which stream is used for image?
+✔ FileInputStream
+
+✔ What happens if serialVersionUID changes?
+👉 InvalidClassException
+
+
+🔥 1️⃣ Scenario: Large Log File (2GB)
+Question:
+You need to read a 2GB log file and search for a keyword. How will you do it?
+
+Expected Answer:
+Use BufferedReader
+Read line by line using readLine()
+Do NOT use readAllLines() (loads entire file into memory ❌)
+Use streaming approach
+
+🔥 2️⃣ Scenario: Writing Data Without Losing Old Content
+Question:
+You are writing to a file, but existing data should not be deleted. What will you do?
+
+Expected Answer:
+Use append mode:
+FileWriter fw = new FileWriter("data.txt", true);
+OR in NIO:
+Files.write(path, data, StandardOpenOption.APPEND);
+
+🔥 3️⃣ Scenario: Object Storage in File
+Question:
+You want to store a User object in a file and retrieve it later. How?
+
+Expected Answer:
+Implement Serializable
+Use ObjectOutputStream
+Use ObjectInputStream
+
+🔥 4️⃣ Scenario: Memory Leak Issue
+Question:
+Your application sometimes crashes after reading many files. Why?
+
+Expected Answer:
+Streams not closed properly
+Resource leak
+Solution → use try-with-resources
+
+🔥 5️⃣ Scenario: Performance Issue
+Question:
+Reading file is very slow. What improvements will you suggest?
+
+Expected Answer:
+Use BufferedReader
+Increase buffer size
+Use NIO
+Avoid reading entire file into memory
+
+🔥 6️⃣ Scenario: Concurrent File Writing
+Question:
+Multiple threads are writing to same file. What problems can occur?
+
+Expected Answer:
+Data corruption
+Overwriting
+Inconsistent data
+Need synchronization or file locking
+
+🔥 7️⃣ Scenario: File Encoding Problem
+Question:
+Special characters are displaying incorrectly. Why?
+
+Expected Answer:
+Encoding mismatch
+Use UTF-8
+Use InputStreamReader with charset
+
+Example:
+new InputStreamReader(new FileInputStream("data.txt"), StandardCharsets.UTF_8);
+
+🔥 8️⃣ Scenario: File Not Found Exception
+Question:
+You are getting FileNotFoundException. Why?
+
+Possible Reasons:
+Wrong path
+File doesn’t exist
+No permission
+Wrong working directory
+
+🔥 9️⃣ Scenario: Reading Only Last 10 Lines of File
+
+Expected Thinking:
+Use RandomAccessFile
+Or maintain sliding buffer
+Or read backwards
+
+🔥 🔟 Scenario: Serialize Class but Field Not Saved
+Question:
+Why is one variable not getting stored?
+Answer:
+It might be marked as transient

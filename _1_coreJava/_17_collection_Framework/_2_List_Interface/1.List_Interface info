@@ -1,0 +1,102 @@
+
+What is a List ?
+--> List is an interface in Java Collection Framework that represents an ordered collection
+    (sequence) of elements. Mutable - That means: you can change its contents after creation.
+📦 Package: java.util
+
+ListIterator → supports backward traversal
+Iterator → forward only
+
+🔹 Key Characteristics of List
+✔️ Maintains insertion order
+✔️ Allows duplicate elements
+✔️ Index-based access
+✔️ Allows multiple null values
+✔️ Elements can be accessed, updated, removed by index
+
+🔹 List Hierarchy
+Iterable
+   ↑
+Collection
+   ↑    \
+List   ✅ Sequence Collection
+ |     ( List Implementations )
+ArrayList
+LinkedList
+Vector
+Stack
+
+1️⃣ Insertion / Add Methods
+Method                                    Return Type	        Description
+boolean add(E e)	                        boolean           Adds element at the end
+void add(int index, E element)	            void	          Adds element at specific index
+boolean addAll(Collection<? extends E> c)	boolean	          Adds all elements of another collection
+boolean addAll(int index, Collection<? extends E> c)          Adds all elements of another collection at specific index
+                                             boolean
+
+2️⃣ Deletion / Remove Methods
+Method	                                    Return Type	                   Description
+boolean remove(Object o)	                  boolean         	Removes first occurrence of object
+E remove(int index)	                             E	            Removes element at index
+boolean removeAll(Collection<?> c)	          boolean	        Removes all matching elements
+boolean retainAll(Collection<?> c)	          boolean	        Keeps only elements present in given collection
+void clear()                                	void	        Removes all elements
+default boolean removeIf(Predicate<? super E> filter)	        Removes elements matching the predicate
+
+
+3️⃣ Search / Access Methods
+Method	                       Return Type	               Description
+E get(int index)	               E	                Returns element at index
+E set(int index, E element)	       E	                Replaces element at index
+boolean contains(Object o)	    boolean	                Checks if element exists
+boolean containsAll(Collection<?> c) boolean     	Checks if all elements of collection exist
+int indexOf(Object o)	          int	                First index of element
+int lastIndexOf(Object o)	      int	                Last index of element
+
+
+4️⃣ Size / Status Methods
+Method	           Return Type	             Description
+int size()	          int	              Number of elements
+boolean isEmpty()	boolean	              Checks if list is empty
+
+5️⃣ Traversal / Cursor Methods
+Method	Return Type	Description
+Iterator<E> iterator()	Iterator<E>	Forward traversal
+ListIterator<E> listIterator()	ListIterator<E>	Forward + backward traversal
+ListIterator<E> listIterator(int index)	ListIterator<E>	Traversal starting at given index
+
+6️⃣ Conversion / View Methods
+Method	                      Return Type	   Description
+Object[] toArray()	           Object[] 	  Converts list to array
+<T> T[] toArray(T[] a)	         T[]	      Converts list to typed array
+List<E> subList(int fromIndex, int toIndex)	  Returns a view of list (fromIndex inclusive, toIndex exclusive)
+                                List<E>
+
+7️⃣ Comparison / Object Methods
+Method	                    Return Type	      Description
+boolean equals(Object o)	boolean	        Compares list with another object
+
+Complete List Methods Summary (One Shot)
+✔ From Collection:
+add
+addAll
+remove
+removeAll
+retainAll
+clear
+contains
+containsAll
+size
+isEmpty
+iterator
+toArray
+
+✔ Extra from List:
+get
+set
+add(index)
+remove(index)
+indexOf
+lastIndexOf
+listIterator
+subList

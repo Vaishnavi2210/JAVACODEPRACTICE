@@ -1,0 +1,42 @@
+✅ WeakHashMap in Java
+
+WeakHashMap is a special implementation of the Map interface in Java where keys are stored as weak references.
+
+🔹 What is a Weak Reference?
+
+Normally (like in HashMap), keys are stored with strong references → meaning the object cannot be garbage collected as long as it is in the map.
+But in WeakHashMap:
+Keys are stored using WeakReference
+If a key has no strong reference outside the map, it becomes eligible for Garbage Collection (GC)
+When GC runs → that entry is automatically removed from the map
+
+🔹 Syntax
+Map<KeyType, ValueType> map = new WeakHashMap<>();
+
+
+🔹 Important Points
+Feature	WeakHashMap
+Order maintained?	❌ No
+Allows null key?	✅ Yes (1 null key)
+Thread safe?	    ❌ No
+Reference type  	Weak reference (for keys only)
+GC removes entry?	✅ Yes
+
+🔹 Where is it Used?
+
+✔ Caching
+✔ Storing metadata
+✔ Listener registration
+✔ Memory-sensitive mappings
+
+Example: If you want objects to disappear automatically when no longer used.
+
+🔹 Difference: HashMap vs WeakHashMap
+HashMap     	               WeakHashMap
+Strongreference	                Weak reference
+Entry stays until removed   	Entry removed by GC
+Manual removal required     	Automatic removal
+
+If interviewer asks 👇
+Q: Why use WeakHashMap?
+👉 To avoid memory leaks when keys should not prevent garbage collection.

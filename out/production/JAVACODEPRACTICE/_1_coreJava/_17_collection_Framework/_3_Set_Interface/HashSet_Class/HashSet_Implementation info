@@ -1,0 +1,18 @@
+-- Q) What is HashSet?
+   --> Part of java.util
+       Implements Set
+       No duplicates
+       No insertion order
+       Allows one null
+       Backed by HashMap
+
+   Set<Integer> set = new HashSet<>();
+
+  --  Step-by-step insertion --
+   set.add(100);
+
+   hashCode() of 100 calculated
+   Bucket index determined
+   If bucket empty → insert
+   If bucket has elements → equals() check
+   Duplicate → ignored

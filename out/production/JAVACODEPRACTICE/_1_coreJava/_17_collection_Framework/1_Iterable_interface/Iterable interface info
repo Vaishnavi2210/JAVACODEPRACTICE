@@ -1,0 +1,65 @@
+
+What is Iterable?
+--> Iterable is the root interface of the Collection framework
+    that provides the iterator() method to enable traversal using the for-each loop.
+    It is present in java.lang package.
+
+public interface Iterable<T> {
+    Iterator<T> iterator();
+}
+
+Q. When was Iterable introduced?
+--> Introduced in Java 1.5
+    Along with Generics and for-each loop
+📌 It has only one abstract method → iterator(), return type also iterator.
+
+Iterable<Integer> ref = new ArrayList<>();     // only iterable methode accsess (parent child relation)
+  ref.add(10); ❌                                  parent ref not give child methods otherwise CTE
+  ref.remove(10); ❌
+
+Iterator<Integer> it = ref.iterator(); ✅
+
+The main purpose of Iterable is to allow traversal of a collection using the for-each loop.
+Without Iterable:
+for(Object o : collection) ❌ compile-time error
+
+With Iterable:
+for(Integer i : list){  ✅
+System.out.println(i);
+}
+
+Enhanced for loop(for each loop) : Internally worked
+
+Iterator<Integer> it = list.iterator();
+while(it.hasNext()) {
+    Integer i = it.next();
+    System.out.println(i);
+}
+
+Iterable provides - iterator() method which is abstract method and
+                    iterator interface which have hasNext() and next() methods.
+
+Iterable
+   ↑
+Collection
+   ↑
+List, Set, Queue
+
+Q. Which classes implement Iterable?
+--> All collection classes implement Iterable indirectly:
+
+✔️ ArrayList
+✔️ LinkedList
+✔️ HashSet
+✔️ TreeSet
+✔️ Vector
+✔️ Stack
+
+❌ Map does NOT implement Iterable directly
+
+❓ Which interface supports for-each loop?
+A. Iterator
+B. Collection
+C. Iterable ✅
+D. List
+

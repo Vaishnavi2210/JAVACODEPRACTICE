@@ -1,0 +1,29 @@
+Project Lombok is an open-source organization that develops a Java library
+designed to reduce boilerplate code in Java applications.
+It automatically generates common methods such as getters, setters, constructors,
+and builders at compile time through annotation processing, simplifying Java development and improving readability.
+Lombok = Java ka shortcut tool for boring code.
+Key facts
+Founded: 2009
+Primary language: Java
+License: MIT License
+Core tool: Lombok annotation processor (lombok.jar)
+Use case: Code generation for repetitive Java constructs
+
+How it works
+Lombok leverages the Java Annotation Processing Tool (APT) to modify compiled bytecode.
+Developers annotate fields or classes (for example, @Getter, @Setter, or @Builder),
+and Lombok injects the corresponding methods during compilation.
+This eliminates the need for manually written boilerplate code while maintaining clean, readable source files.
+
+Notable features
+Key annotations include:
+
+@Data: Generates getters, setters, toString, equals, and hashCode.
+
+@Builder: Enables the builder design pattern.
+
+@Value: Creates immutable classes.
+
+@Slf4j: Adds logging frameworks seamlessly.
+Lombok also provides experimental features like @With and @SneakyThrows for advanced coding patterns.

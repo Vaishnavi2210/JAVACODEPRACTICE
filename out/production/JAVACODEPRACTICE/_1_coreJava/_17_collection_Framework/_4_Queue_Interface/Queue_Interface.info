@@ -1,0 +1,37 @@
+
+What is Queue interface ?
+  --> 1️⃣ Queue Interface in Java
+
+      Package: java.util.Queue
+
+      Type: Interface (implemented by LinkedList, PriorityQueue, ArrayDeque, etc.)
+
+      Purpose: FIFO (First In First Out) data structure
+
+      Hierarchy:
+
+      java.lang.Object
+         ↳ java.util.AbstractCollection<E>
+             ↳ java.util.Queue<E>
+
+  | Method       | Description             | Throws Exception                  | Special Behavior           |
+  | ------------ | ----------------------- | --------------------------------- | -------------------------- |
+  | `add(E e)`   | Inserts element at tail | `IllegalStateException` if full   | Throws exception if failed |
+  | `offer(E e)` | Inserts element at tail | No exception                      | Returns `false` if failed  |
+  | `remove()`   | Removes head element    | `NoSuchElementException` if empty | Throws exception if empty  |
+  | `poll()`     | Removes head element    | No exception                      | Returns `null` if empty    |
+  | `element()`  | Retrieves head element  | `NoSuchElementException` if empty | Throws exception if empty  |
+  | `peek()`     | Retrieves head element  | No exception                      | Returns `null` if empty    |
+
+
+3️⃣ Common Implementations
+  Class	                     Characteristics
+LinkedList	            Doubly linked list, allows null, implements Queue & Deque
+PriorityQueue	        Orders elements according to natural ordering(Comparable) or Comparator
+ArrayDeque	            Resizable array, faster than LinkedList, implements Queue & Deque
+ConcurrentLinkedQueue	Thread-safe, fail-safe iterator
+
+
+4️⃣ Fail-Fast vs Fail-Safe Iterators
+Fail-Fast: LinkedList, ArrayDeque → throws ConcurrentModificationException if modified during iteration
+Fail-Safe: ConcurrentLinkedQueue → does not throw exception; iterator works on a snapshot

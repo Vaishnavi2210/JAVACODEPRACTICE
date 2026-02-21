@@ -1,0 +1,30 @@
+1️⃣ What is CallableStatement?
+CallableStatement is a JDBC interface in Java.
+It is used to call stored procedures in the database.
+
+Stored procedures can have:
+IN parameters → input to procedure
+OUT parameters → output from procedure
+INOUT parameters → both input & output
+
+Example:
+CallableStatement cs = con.prepareCall("{call procedure_name(?, ?)}");
+
+2️⃣ Why use CallableStatement?
+Code Reusability: Complex SQL logic can be written once in the database and reused.
+Performance: Stored procedures run on the database server → faster than multiple SQL queries from Java.
+Security: Helps prevent SQL injection when using parameters.
+Easier Maintenance: SQL logic is in the database, Java code is cleaner.
+
+3️⃣ Difference between Statement, PreparedStatement, and CallableStatement
+Feature	          Statement	                  PreparedStatement	                    CallableStatement
+Purpose	       Execute simple SQL queries	  Execute parameterized SQL queries	   Execute stored procedures
+Parameters	   No parameters	              Input parameters only	               IN, OUT, INOUT parameters
+Security	   Low (prone to SQL injection)	  Higher (precompiled queries)         Higher (parameters safely handled)
+Performance	   Less efficient	              More efficient (precompiled)	       Efficient for complex procedures
+Example	      stmt.executeQuery("SELECT * FROM Employee")	ps.setInt(1, 10);      ps.executeQuery()	cs.setInt(1, 10); cs.registerOutParameter(2, Types.INTEGER); cs.execute()
+
+💡 Summary:
+Statement → simple queries
+PreparedStatement → parameterized queries
+CallableStatement → stored procedures

@@ -1,0 +1,179 @@
+File Handling
+📂 File Handling in Java
+
+File handling means creating, reading, writing, and deleting files using Java.
+Java provides file handling support mainly through:
+java.io package (Traditional – Java 1.0)
+java.nio.file package (Modern – Java 7+)
+
+                         java.lang.Object
+                                │
+                                ▼
+                         java.io.Closeable
+                                │
+                                ▼
+                         AutoCloseable
+                                │
+        ┌───────────────────────┼────────────────────────┐
+        │                       │                        │
+        ▼                       ▼                        ▼
+     File                InputStream                OutputStream
+   (File info)             (Byte)                     (Byte)
+                               │                         │
+        ┌───────────────┬──────┼──────────────┐     ┌────┼───────────────┐
+        │               │      │              │     │    │               │
+        ▼               ▼      ▼              ▼     ▼    ▼               ▼
+FileInputStream  BufferedInputStream  DataInputStream  FileOutputStream  BufferedOutputStream
+                                             │                         │
+                                             ▼                         ▼
+                                      ObjectInputStream         ObjectOutputStream
+                                      (Serialization)           (Serialization)
+
+(object -> 1) byte stream   2) Character Stream
+                                ▼
+                             Reader
+                           (Character)
+                                │
+        ┌───────────────┬──────┼──────────────┐
+        │               │      │              │
+        ▼               ▼      ▼              ▼
+    FileReader    BufferedReader   InputStreamReader
+
+                               ▼
+                             Writer
+                           (Character)
+                                │
+        ┌───────────────┬──────┼──────────────┐
+        │               │      │              │
+        ▼               ▼      ▼              ▼
+    FileWriter   BufferedWriter  OutputStreamWriter
+                                         │
+                                         ▼
+                                    PrintWriter
+
+🔹 1️⃣ Creating a File
+
+Using File class:
+
+import java.io.File;
+import java.io.IOException;
+
+public class CreateFileExample {
+    public static void main(String[] args) throws IOException {
+        File file = new File("sample.txt");
+
+        if (file.createNewFile()) {
+            System.out.println("File Created");
+        } else {
+            System.out.println("File already exists");
+        }
+    }
+}
+
+🔹 2️⃣ Writing to a File
+✅ Using FileWriter
+import java.io.FileWriter;
+import java.io.IOException;
+
+public class WriteExample {
+    public static void main(String[] args) throws IOException {
+        FileWriter writer = new FileWriter("sample.txt");
+        writer.write("Hello Vaishnavi");
+        writer.close();
+    }
+}
+
+
+👉 Overwrites existing content.
+
+✅ Append Mode
+FileWriter writer = new FileWriter("sample.txt", true);
+
+🔹 3️⃣ Reading from a File
+✅ Using Scanner
+import java.io.File;
+import java.util.Scanner;
+
+public class ReadExample {
+    public static void main(String[] args) throws Exception {
+        File file = new File("sample.txt");
+        Scanner sc = new Scanner(file);
+
+        while (sc.hasNextLine()) {
+            System.out.println(sc.nextLine());
+        }
+        sc.close();
+    }
+}
+
+🔹 4️⃣ Using BufferedReader (Better Performance)
+import java.io.*;
+
+public class BufferedReadExample {
+    public static void main(String[] args) throws Exception {
+        BufferedReader br = new BufferedReader(new FileReader("sample.txt"));
+
+        String line;
+        while ((line = br.readLine()) != null) {
+            System.out.println(line);
+        }
+
+        br.close();
+    }
+}
+
+🔹 5️⃣ Using BufferedWriter
+BufferedWriter bw = new BufferedWriter(new FileWriter("sample.txt"));
+bw.write("Java File Handling");
+bw.close();
+
+
+👉 Faster than FileWriter.
+
+🔹 6️⃣ Deleting a File
+File file = new File("sample.txt");
+
+if (file.delete()) {
+    System.out.println("Deleted Successfully");
+}
+
+🔹 7️⃣ Modern Way (Java 7+) – NIO
+Writing
+import java.nio.file.*;
+import java.io.IOException;
+
+public class NIOWrite {
+    public static void main(String[] args) throws IOException {
+        Files.write(Paths.get("sample.txt"), "Hello".getBytes());
+    }
+}
+
+Reading
+Files.readAllLines(Paths.get("sample.txt"))
+     .forEach(System.out::println);
+
+🔹 Important Interview Points
+
+✔ Always close streams (or use try-with-resources)
+✔ Buffered streams are faster
+✔ File class handles file metadata
+✔ IOException is checked exception
+✔ NIO is preferred in modern applications
+
+🔥 Best Practice (Try-With-Resources)
+try (BufferedReader br = new BufferedReader(new FileReader("sample.txt"))) {
+    System.out.println(br.readLine());
+}
+
+
+👉 Automatically closes resource.
+
+🔹 Common Classes in File Handling
+Class	                       Purpose
+File	                      File metadata
+FileReader	                 Read character data
+FileWriter                   Write character data
+BufferedReader	             Efficient reading
+BufferedWriter          	 Efficient writing
+Scanner	Read                formatted input
+Files (NIO)	                Modern file handling

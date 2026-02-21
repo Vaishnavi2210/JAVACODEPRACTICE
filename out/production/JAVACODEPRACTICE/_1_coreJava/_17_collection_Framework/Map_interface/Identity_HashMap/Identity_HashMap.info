@@ -1,0 +1,47 @@
+1️⃣ What is IdentityHashMap?
+
+IdentityHashMap is a special type of Map in Java where:
+
+✅ Keys are compared using == (reference equality)
+❌ NOT using .equals()
+
+That is the BIG difference.
+
+2️⃣ Normal HashMap vs IdentityHashMap
+HashMap
+Uses:
+hashCode()
+equals()
+If two objects are logically equal → treated as same key
+
+IdentityHashMap
+Uses:
+== (memory address comparison)
+Even if objects are equal in value → treated as different keys if memory reference differs
+
+
+6️⃣ Internal Working
+Feature	IdentityHashMap
+Key comparison	== (reference equality)
+Allows null key	Yes
+Performance	O(1) average
+Order	No order guarantee
+Thread-safe	No
+
+7️⃣ When is IdentityHashMap used?
+Very rare in normal applications.
+
+Used in:
+Object graph processing
+
+Serialization
+When identity (memory reference) matters
+Framework-level internal operations
+Not commonly asked in basic interviews, but good to know for advanced Java.
+
+
+If interviewer asks:
+
+👉 "What is IdentityHashMap?"
+You say:
+IdentityHashMap compares keys using reference equality (==) instead of equals(), unlike HashMap.

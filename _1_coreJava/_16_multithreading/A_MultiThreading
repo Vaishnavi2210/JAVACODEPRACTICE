@@ -1,0 +1,85 @@
+1. Multitasking (Process Level)
+Sample Answer:
+"Multitasking is when a computer runs multiple programs or processes at the same time.
+For example,
+  I can listen to music, browse the internet, and write a document simultaneously.
+  The operating system manages these processes by quickly switching the CPU between them.
+  Each process has its own memory, so they run independently."
+Tips:
+Mention OS manages it
+Give a real-life example
+
+2. Multithreading (Thread Level)
+Sample Answer:
+"Multithreading is when a single program performs multiple tasks at the same time using threads.
+  Each thread is like a lightweight process within the program and shares the same memory.
+  For example, in a browser, one thread loads images while another handles user clicks.
+  This improves the program’s efficiency and responsiveness."
+
+Tips:
+Mention threads share memory
+Give a practical example from real applications
+
+What is Thread ?
+-> Threads are part of a process (a program).
+    Multiple threads in a process share the same memory, but each has its own execution path.
+    Threads make a program faster and more responsive.
+    Java supports threads using the Thread class or Runnable interface.
+
+Thread Life Cycle – Interview Explanation
+
+"A thread in Java goes through five main states during its life cycle: New, Runnable, Running, Waiting/Blocked/Timed Waiting, and Terminated."
+
+1. New (Created)
+Definition: Thread object is created but not yet started.
+How: Using Thread t = new Thread().
+Important: run() is not executed yet.
+"Think of it as a person who is ready to start work but hasn’t started yet."
+
+2. Runnable (Ready to Run)
+Definition: Thread is ready to run and waiting for CPU scheduler.
+
+How: When we call t.start().
+Important: It may not start immediately; CPU decides which thread runs first.
+"Like a person waiting in line for their turn."
+
+3. Running
+Definition: Thread is currently executing the run() method.
+Important: Only one thread per CPU core runs at a time.
+"The person is now actively doing the task."
+
+4. Waiting / Blocked / Timed Waiting
+Definition: Thread is temporarily inactive, waiting for something:
+
+Waiting: waits indefinitely until notified (wait())
+
+Timed Waiting: waits for a specific time (sleep(ms) or join(ms))
+Blocked: waiting for a lock to enter a synchronized block
+"Like a person waiting for permission, tools, or a signal to continue work."
+
+5. Terminated (Dead)
+Definition: Thread has finished execution of run().
+Important: A terminated thread cannot be restarted.
+"The person has completed the task and left."
+
+New → Runnable: when start() is called
+Runnable → Running: CPU scheduler picks the thread
+Running → Waiting/Blocked/Timed Waiting: thread waits
+Waiting/Blocked/Timed Waiting → Runnable: notified or time expires
+Running → Terminated: run() method finishes
+
+Tip:
+start() moves thread from New → Runnable
+run() is executed when thread is Running
+sleep() and join() cause Timed Waiting
+wait() causes Waiting, needs notify() to continue
+
+
+java.lang.Object
+    └── java.util.concurrent.Executor (interface)
+            ├── ExecutorService (interface)
+            │       ├── ScheduledExecutorService (interface)
+            │       └── AbstractExecutorService (abstract class)
+            │               ├── ThreadPoolExecutor (class)
+            │               └── ScheduledThreadPoolExecutor (class)
+            └── ForkJoinPool (class) [implements ExecutorService]

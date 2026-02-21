@@ -1,0 +1,30 @@
+1️⃣ What is HashMap?
+
+HashMap is a Map implementation in Java.
+Stores key-value pairs.
+Keys are unique, values can be duplicate.
+Does not maintain any order (insertion order is not preserved).
+Allows 1 null key and multiple null values.
+
+Internally implemented using hash table → buckets + linked list/tree (Java 8).
+
+✅ Key idea: Fast access by key using hashing
+
+
+✅ Notice: order is not preserved — HashMap is unordered.
+
+4️⃣ HashMap Internals (Java 8+)
+
+HashMap stores entries in buckets based on hashCode of key.
+Each bucket initially is a linked list.
+If bucket size > 8, linked list converted to Red-Black Tree for faster lookup (O(log n)).
+Key equality is checked using equals().
+
+5️⃣ HashMap vs LinkedHashMap vs TreeMap
+
+Feature	     HashMap	 LinkedHashMap	    TreeMap
+Key Order	   No	        Insertion	    Sorted (natural/comparator)
+Null Key	   ✅ 1	         ✅ 1	        ❌ No
+Null Values	   ✅	         ✅	            ✅
+Performance	  O(1) avg	   O(1) avg	        O(log n)
+Use-case	General 	 Maintain order	    Sorted map
